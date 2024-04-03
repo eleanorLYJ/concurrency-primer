@@ -20,9 +20,9 @@ jobs:
     - name: make
       run: make
     
-    - uses: actions/upload-artifact@v2
+    - uses: actions/upload-artifact@v3
       with:
-        name: pdf
-        path: .
+          name: concurrency-primer
+          path: concurrency-primer.pdf
 
     
