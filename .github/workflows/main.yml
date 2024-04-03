@@ -8,7 +8,7 @@ jobs:
       continue-on-error: true
     - name: install-texlive
       run: | 
-        sudo apt-get install -q -y texlive-base texlive-latex-base
+        sudo apt-get install -q -y texlive-full texlive-latex-base
       shell: bash
     - uses: actions/setup-python@v5
       with:
