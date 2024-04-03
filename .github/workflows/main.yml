@@ -19,9 +19,10 @@ jobs:
         pip install pygments
     - name: make
       run: make
-    - name: Upload PDF
+    
     - uses: actions/upload-artifact@v2
       with:
+        name: pdf
         path: concurrency-primer.pdf
 
     
