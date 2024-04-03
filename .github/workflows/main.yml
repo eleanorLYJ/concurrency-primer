@@ -19,10 +19,10 @@ jobs:
         pip install pygments
     - name: make
       run: make
-    
     - uses: actions/upload-artifact@v3
       with:
-          name: concurrency-primer
+          name: upload pdf
           path: concurrency-primer.pdf
+      continue-on-error: false  # Fail workflow if upload fails
 
     
