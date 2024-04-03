@@ -19,10 +19,14 @@ jobs:
         pip install pygments
     - name: make
       run: make
-    - uses: actions/upload-artifact@v3
+    # - uses: actions/upload-artifact@v3
+      uses: svenstaro/upload-release-action@v2
       with:
-          name: upload pdf
-          path: concurrency-primer.pdf
-      continue-on-error: false  # Fail workflow if upload fails
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: concurrency-primer.pdf
+        asset_name: pdf
+        tag: ${{ github.ref }}
+        overwrite: true
+        body: "This is my release text"
 
     
