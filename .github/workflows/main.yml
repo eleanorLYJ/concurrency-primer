@@ -19,16 +19,28 @@ jobs:
         pip install pygments
     - name: make
       run: make
+<<<<<<< HEAD
     - name: create Release
       id: create_Release
       uses: actions/create-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
       with:
+=======
+    - name: Create and Upload Release
+      id: release
+      uses: softprops/action-gh-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        files: |
+          ./concurrency-primer.pdf
+>>>>>>> 55679e8 (Utilize softprops/action-gh-release for release)
         tag_name: ${{ github.ref_name }}
         release_name: Release ${{ github.ref_name }}
         body: |
           Changes in this Release
+<<<<<<< HEAD
     - name: Upload Release Asset
       id: upload-release-asset 
       uses: actions/upload-release-asset@v1
@@ -40,3 +52,5 @@ jobs:
         asset_name: concurrency-primer.pdf
         asset_content_type:  application/pdf 
     
+=======
+>>>>>>> 55679e8 (Utilize softprops/action-gh-release for release)
