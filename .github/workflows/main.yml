@@ -30,7 +30,8 @@ jobs:
         tag_name: ${{ github.ref_name }}
     - name: Convert LaTeX to HTML
       run: |
-        make4ht  concurrency-primer
+        wget https://raw.githubusercontent.com/sysprog21/arm-assembler-latex-listings/master/lstlangarm.sty
+        make4ht -l concurrency-primer.tex
     - name: Upload HTML artifact
       uses: actions/upload-artifact@v2
       with:
