@@ -30,7 +30,7 @@ jobs:
         tag_name: ${{ github.ref_name }}
     - name: Convert LaTeX to HTML
       run: |
-        make4ht -o index.html concurrency-primer.tex
+        make4ht  concurrency-primer
     - name: Upload HTML artifact
       uses: actions/upload-artifact@v2
       with:
