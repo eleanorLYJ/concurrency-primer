@@ -33,14 +33,13 @@ jobs:
         wget https://raw.githubusercontent.com/sysprog21/arm-assembler-latex-listings/master/lstlangarm.sty
         sudo apt-get update
         sudo apt-get install -y python3-pygments
-       # Invoke LaTeX with the -shell-escape flag
+        # Invoke LaTeX with the -shell-escape flag
         make4ht -l concurrency-primer.tex "htlatex" "-shell-escape"
     - name: Upload HTML artifact
       uses: actions/upload-artifact@v2
       with:
         name: html-output
         path: public
-      # Publish HTML to GitHub Pages
     - name: Publish HTML to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
