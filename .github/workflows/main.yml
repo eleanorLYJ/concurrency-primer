@@ -21,31 +21,29 @@ jobs:
       run: make
     - name: Create and Upload Release
       id: release
-      uses: softprops/action-gh-release@v1
+      uses: softprops/action-gh-release@v2
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         files: |
           ./concurrency-primer.pdf
         tag_name: ${{ github.ref_name }}
-        release_name: Release ${{ github.ref_name }}
     - name: Convert LaTeX to HTML
       run: |
-        make4ht -l -c html5 -e main.mk4 concurrency-primer.tex
-    - name: Move HTML output to appropriate location
-      run: |
-        mkdir public
-        mv concurrency-primer.html public/index.html
+        # make4ht -l -c html5 -e main.mk4 concurrency-primer.tex
+        pdflatex concurrency-primer.tex
+        make4ht main.tex
+        mv main.html index.html
+    # - name: Move HTML output to appropriate location
+    #   run: |
+    #     mkdir public
+    #     mv index.html public/index.html
 
     - name: Upload HTML artifact
       uses: actions/upload-artifact@v2
       with:
         name: html-output
         path: public
-
-    - name: Convert LaTeX to HTML
-      run: |
-        make4ht -l -c html5 -e main.mk4 concurrency-primer.tex
       
       # Publish HTML to GitHub Pages
     - name: Publish HTML to GitHub Pages
