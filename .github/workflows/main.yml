@@ -33,7 +33,6 @@ jobs:
         wget https://raw.githubusercontent.com/sysprog21/arm-assembler-latex-listings/master/lstlangarm.sty
         sudo apt-get update
         sudo apt-get install -y python3-pygments
-        # Invoke LaTeX with the -shell-escape flag
         make4ht -s -l concurrency-primer.tex
     - name: Upload HTML artifact
       uses: actions/upload-artifact@v2
