@@ -30,21 +30,12 @@ jobs:
         tag_name: ${{ github.ref_name }}
     - name: Convert LaTeX to HTML
       run: |
-        # make4ht -l -c html5 -e main.mk4 concurrency-primer.tex
-        pdflatex concurrency-primer.tex
-        make4ht main.tex
-        mv main.html index.html
-    # - name: Move HTML output to appropriate location
-    #   run: |
-    #     mkdir public
-    #     mv index.html public/index.html
-
+        make4ht -o index.html concurrency-primer.tex
     - name: Upload HTML artifact
       uses: actions/upload-artifact@v2
       with:
         name: html-output
         path: public
-      
       # Publish HTML to GitHub Pages
     - name: Publish HTML to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
